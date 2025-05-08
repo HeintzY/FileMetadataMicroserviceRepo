@@ -12,6 +12,11 @@ app.get('/', function (req, res) {
 });
 
 
+// Project solution:
+const multer = require("multer")
+app.post("/api/fileanalyse", multer().single("upfile"), function (req, res) {
+  res.json({ name: req.file.originalname, type: req.file.mimetype, size: req.file.size });
+});
 
 
 const port = process.env.PORT || 3000;
